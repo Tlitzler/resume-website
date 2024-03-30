@@ -14,7 +14,7 @@ const Home = () => {
                 Tyler Litzler
             </NameText>
             <DisplayText>
-                This is a basic homepage template.
+                Interactive Resume Website
             </DisplayText>
         </div>
     );

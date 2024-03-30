@@ -1,6 +1,6 @@
 // import Head from 'next/head';
 // import styles from '../styles/Home.module.css';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import PageWrapper from '../app/Molecules/PageWrapper';
 import Sidebar from '../app/Atoms/Sidebar';
 import Button from '../app/Atoms/Button';
@@ -12,15 +12,16 @@ import { ThemeProvider } from '@emotion/react';
 import theme from '../app/Theme/theme';
 
 const Page = () => {
-  const homeRef = useRef(null);
-  const aboutRef = useRef(null);
-  const projectsRef = useRef(null);
-  const contactRef = useRef(null);
+  const homeRef = useRef<null | HTMLDivElement>(null);
+  const aboutRef = useRef<null | HTMLDivElement>(null);
+  const projectsRef = useRef<null | HTMLDivElement>(null);
+  const contactRef = useRef<null | HTMLDivElement>(null);
 
   const [page, setPage] = useState(0);
 
-  useEffect(() => {
-    switch (page) {
+  const handlePageSelect = useCallback((newPage: number) => {
+    setPage(newPage);
+    switch (newPage) {
       case 0:
         if (homeRef.current === null) return;
         homeRef.current.scrollIntoView();
@@ -38,14 +39,13 @@ const Page = () => {
         contactRef.current.scrollIntoView();
         break;
     }
-  }
-  , [page]);
+  }, []);
 
   const sidebarContent = (
     <Sidebar 
       options={['Home', 'About', 'Projects', 'Contact']} 
       selectedOption={page}
-      selectOption={setPage}/>
+      selectOption={handlePageSelect}/>
   );
 
   const handleScroll = (event: Event) => {  

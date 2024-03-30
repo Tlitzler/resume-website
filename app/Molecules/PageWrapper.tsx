@@ -24,9 +24,9 @@ const PageWrapper = ({children, sidebarContent, onScroll}: IPageWrapperProps) =>
         alignItems: 'center',
         width: '100%',
         paddingLeft: '200px',
-        height: '100vh',
         overflowY: 'auto',
-        paddingTop: '50px',
+        paddingTop: '100px',
+        gap: '100px',
     });
 
     useEffect(() => {

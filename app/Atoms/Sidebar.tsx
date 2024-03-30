@@ -43,7 +43,8 @@ const Sidebar = ({options, selectedOption,selectOption}: ISidebarProps) => {
                         {option}
                     </SelectedOption>
                 ) : (
-                    <Button 
+                    <Button
+                        key={index} 
                         type='sidebar' 
                         onClick={() => {
                             setSelected(index);

@@ -38,7 +38,7 @@ const theme: Theme = {
         fontFamily: 'Arial, sans-serif',
         fontSize: '16px',
         header: {
-            fontSize: '24px',
+            fontSize: '26px',
             fontWeight: 'bold',
         },
         paragraph: {
